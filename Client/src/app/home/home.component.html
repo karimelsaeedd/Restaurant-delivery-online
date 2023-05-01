@@ -27,10 +27,10 @@
           placeholder="Restaurant Name"
         />
         <select class="px-4" style="width: 34%" name="City" id="CityId">
-          <option value="cityZero">Select City</option>
-          <option value="cityOne">mansoura</option>
+          <option *ngFor="let Restaurant of RestaurantsList">{{Restaurant.city}}</option>
+          <!-- <option value="cityOne">mansoura</option>
           <option value="cityTwo">Alexandria</option>
-          <option value="cityThree">Cairo</option>
+          <option value="cityThree">Cairo</option> -->
         </select>
         <button class="btn btn-danger rounded-0" style="width: 24%">
           Search
@@ -73,7 +73,19 @@
   </div>
 
   <div class="container-fluid border border-dark border-2 rounded-top py-5  m-auto bg-white text-black row ">
-    <div class="container-fluid w-25 border border-dark m-auto p-0 col-4">
+
+    <div class="container-fluid w-25 border border-dark m-auto p-0 col-4" *ngFor="let Restaurant of RestaurantsList">
+      <div class="">
+        <img class="img-fluid" src="{{Restaurant.imgUrl}}" />
+      </div>
+      <div class=" p-4">
+        <h4>{{Restaurant.name}}</h4>
+        <p>{{Restaurant.description}}</p>
+        <a class="text-dark fw-bold" href="#">Menu</a>
+      </div>
+    </div>
+
+    <!-- <div class="container-fluid w-25 border border-dark m-auto p-0 col-4">
       <div class="">
         <img class="img-fluid" src="assets/Images/Home/HomeBackground.jpeg" />
       </div>
@@ -103,23 +115,7 @@
         </p>
         <a href="#">Menu</a>
       </div>
-    </div>
-
-    <div class="container-fluid w-25 border border-dark m-auto p-0 col-4">
-      <div class="">
-        <img class="img-fluid" src="assets/Images/Home/HomeBackground.jpeg" />
-      </div>
-      <div class=" p-4">
-        <h4>JHLBJHL</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est,
-          laudantium ipsam ad deserunt dolores inventore neque. Reprehenderit
-          velit quibusdam accusamus iusto dolorum vitae ex placeat sint, dolorem
-          nemo quae neque.
-        </p>
-        <a href="#">Menu</a>
-      </div>
-    </div>
+    </div> -->
 
   </div>
 </div>
