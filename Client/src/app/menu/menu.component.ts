@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
 
   RestaurantId:any=1;
   MenuList:any[] = [];
-  selectedItems: string[] = [];
+  selectedItems: {id:number , name:string , description:string , imgUrl:string , price:number}[] = [];
 
   getMenu()
   {
@@ -29,14 +29,14 @@ export class MenuComponent implements OnInit {
     })
   }
 
-  updateSelectedItems(event: any) {
+  updateSelectedItems(menu: {id:number , name:string , description:string , imgUrl:string , price:number}, event: any) {
     const isChecked = event.target.checked;
-    const value = event.target.value;
+    const id = menu.id;
 
     if (isChecked) {
-      this.selectedItems.push(value);
+      this.selectedItems.push(menu);
     } else {
-      const index = this.selectedItems.indexOf(value);
+      const index = this.selectedItems.findIndex(i => i.id === id);
       if (index > -1) {
         this.selectedItems.splice(index, 1);
       }

@@ -9,7 +9,7 @@
         <img class="img-fluid" src="{{menu.imgUrl}}" />
       </div>
       <div class="col-6 row">
-        <input class="w-25 h-25" type="checkbox" value="{{menu.id}}" (change)="updateSelectedItems($event)"> {{menu.name}}
+        <input class="w-25 h-25" type="checkbox" value="{{menu.id}}" (change)="updateSelectedItems(menu , $event)"> {{menu.name}}
         <!-- <h4>{{menu.name}}</h4> -->
         <p>{{menu.description}}</p>
         <div class="d-flex justify-content-end align-self-end">{{menu.price}}</div>
@@ -19,7 +19,7 @@
   </div>
 
   <div>
-    <button type="submit" (click)="SaveInLocalStorage()">Next</button>
+    <button type="submit" (click)="SaveInLocalStorage()" [disabled]="selectedItems.length === 0" [routerLink]="['/user']" routerLinkActive="router-link-active">Next</button>
   </div>
 
 
