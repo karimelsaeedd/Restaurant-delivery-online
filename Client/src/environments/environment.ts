@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  Url: "https://localhost:7119/api/Restaurant"
+  RestaurantUrl: "https://localhost:7119/api/Restaurant",
+  MenuUrl: "https://localhost:7119/api/Menu/RestaurantId?RestaurantId="
 };
 
 /*
