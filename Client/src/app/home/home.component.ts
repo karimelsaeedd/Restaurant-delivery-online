@@ -13,14 +13,19 @@ export class HomeComponent implements OnInit {
   constructor(private _RestaurantService:RestaurantService,private _Router:Router) { }
 
   RestaurantsList:any[] = [];
-  SearchTerm:string = "";
+  AllRestaurantsList:any[] = [];
+  SearchByRestaurantName:string = "";
+  searchByCity:string = ""
 
   getRestaurants()
   {
     this._RestaurantService.getRestaurants().subscribe({
       next :(response) => {
+        this.AllRestaurantsList = response;
         // console.log(response);
-        this.RestaurantsList = response.filter((item:any) => item.name.toLowerCase().includes(this.SearchTerm.toLowerCase()))
+        this.RestaurantsList = response.filter((item:any) => item.name.toLowerCase().includes(this.SearchByRestaurantName.toLowerCase())
+        && item.city.toLowerCase().includes(this.searchByCity.toLowerCase())
+        )
       },
     })
   }

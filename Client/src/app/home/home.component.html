@@ -25,10 +25,11 @@
           name="search"
           id="searchId"
           placeholder="Restaurant Name"
-          [(ngModel)]="SearchTerm"
+          [(ngModel)]="SearchByRestaurantName"
         />
-        <select class="px-4" style="width: 34%" name="City" id="CityId">
-          <option *ngFor="let Restaurant of RestaurantsList">{{Restaurant.city}}</option>
+        <select class="px-4" style="width: 34%" name="City" id="CityId" [(ngModel)]="searchByCity">
+          <option selected value="" >Select City</option>
+          <option *ngFor="let Restaurant of AllRestaurantsList" >{{Restaurant.city}}</option>
           <!-- <option value="cityOne">mansoura</option>
           <option value="cityTwo">Alexandria</option>
           <option value="cityThree">Cairo</option> -->

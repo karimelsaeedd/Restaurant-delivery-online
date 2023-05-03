@@ -1,56 +1,154 @@
-<div class="userForm m-auto my-5 w-75">
-  <h1>Reserve Now </h1>
-  <p>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum, at assumenda atque dolorum maiores excepturi! Quia aut eius hic, at doloremque suscipit fuga nam dolores, illum nulla ipsa voluptas?
-  </p>
-  <form [formGroup]="userForm" (ngSubmit)="submitForm()">
-    <div class="group-input mb-3">
-      <label>Name</label>
-      <input formControlName="name" type="text" class="form-control ">
-      <div *ngIf="userForm.controls['name'].touched&&userForm.controls['name'].invalid" class="text-danger">
-        <p *ngIf="userForm.controls['name'].errors?.['required']">Name Required</p>
-        <p *ngIf="userForm.controls['name'].errors?.['minlength']">Name min length shoud be 3</p>
-        <p *ngIf="userForm.controls['name'].errors?.['maxlength']">Name max length shoud be 10</p>
-      </div>
-    </div>
+<div class="row vh-100 container m-auto d-flex justify-content-center align-items-center">
+  <div class="col-6">
+    <div class="userForm w-75">
+      <h1>Reserve Now</h1> <br> <br>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum, at
+        assumenda atque dolorum maiores excepturi! Quia aut eius hic, at
+        doloremque suscipit fuga nam dolores.
+      </p> <br>
+      <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+        <div class="ro">
+          <div class="row">
+            <div class="group-input col-6 mb-3">
+              <label>Name</label>
+              <div class="d-flex">
+                <input formControlName="name" type="text" class="form-control" placeholder="Enter your name" />
+              <i class="fa fa-pencil bg-dark text-white w-25 d-flex justify-content-center align-items-center"></i>
+              </div>
 
-        <div class="group-input mb-3">
-          <label>Phone</label>
-          <input formControlName="phone" type="phone" class="form-control">
-          <div *ngIf="userForm.controls['phone'].touched&&userForm.controls['phone'].invalid" class="text-danger">
-            <p *ngIf="userForm.controls['phone'].errors?.['required']">phone Required</p>
-            <p *ngIf="userForm.controls['phone'].errors?.['pattern']">phone shoud be valid phone</p>
-          </div>
-        </div>
-
-            <div class="group-input mb-3">
-              <label>Email</label>
-              <input formControlName="email" type="email" class="form-control">
-              <div *ngIf="userForm.controls['email'].touched&&userForm.controls['email'].invalid" class="text-danger">
-                <p *ngIf="userForm.controls['email'].errors?.['required']">Email Required</p>
-                <p *ngIf="userForm.controls['email'].errors?.['email']">Email shoud be valid mail</p>
+              <div
+                *ngIf="
+                  userForm.controls['name'].touched &&
+                  userForm.controls['name'].invalid
+                "
+                class="text-danger"
+              >
+                <p *ngIf="userForm.controls['name'].errors?.['required']">
+                  Name Required
+                </p>
+                <p *ngIf="userForm.controls['name'].errors?.['minlength']">
+                  Name min length shoud be 3
+                </p>
+                <p *ngIf="userForm.controls['name'].errors?.['maxlength']">
+                  Name max length shoud be 10
+                </p>
               </div>
             </div>
 
-    <div class="group-input mb-3">
-      <label>Address</label>
-      <input formControlName="address" type="text" class="form-control">
-      <div *ngIf="userForm.controls['address'].touched&&userForm.controls['address'].invalid" class="text-danger">
-        <p *ngIf="userForm.controls['address'].errors?.['required']">address Required</p>
+            <div class="group-input col-6 mb-3">
+              <label>Phone</label>
+              <div class="d-flex">
+                <input
+                formControlName="phone"
+                type="phone"
+                class="form-control"
+                placeholder="Enter your phone"
+              />
+              <i class="fa fa-phone bg-dark text-white w-25 d-flex justify-content-center align-items-center"></i>
+              </div>
+              <div
+                *ngIf="
+                  userForm.controls['phone'].touched &&
+                  userForm.controls['phone'].invalid
+                "
+                class="text-danger"
+              >
+                <p *ngIf="userForm.controls['phone'].errors?.['required']">
+                  phone Required
+                </p>
+                <p *ngIf="userForm.controls['phone'].errors?.['pattern']">
+                  phone shoud be valid phone
+                </p>
+              </div>
+            </div>
+
+            <div class="group-input col-6 mb-3">
+              <label>Email</label>
+              <div class="d-flex">
+                <input
+                  formControlName="email"
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter your email"
+                />
+              <i class="fa fa-envelope bg-dark text-white w-25 d-flex justify-content-center align-items-center"></i>
+              </div>
+
+              <div
+                *ngIf="
+                  userForm.controls['email'].touched &&
+                  userForm.controls['email'].invalid
+                "
+                class="text-danger"
+              >
+                <p *ngIf="userForm.controls['email'].errors?.['required']">
+                  Email Required
+                </p>
+                <p *ngIf="userForm.controls['email'].errors?.['email']">
+                  Email shoud be valid mail
+                </p>
+              </div>
+            </div>
+
+            <div class="group-input col-6 mb-3">
+              <label>Address</label>
+              <div class="d-flex">
+                <input
+                  formControlName="address"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your address"
+                />
+              <i class="fa fa-map-marker bg-dark text-white w-25 d-flex justify-content-center align-items-center"></i>
+              </div>
+              <div
+                *ngIf="
+                  userForm.controls['address'].touched &&
+                  userForm.controls['address'].invalid
+                "
+                class="text-danger"
+              >
+                <p *ngIf="userForm.controls['address'].errors?.['required']">
+                  address Required
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-5">
+          <button (click)="goBack()" class="btn btn-warning">
+            <span> Back </span>
+          </button>
+
+          <button
+            [disabled]="userForm.invalid"
+            type="submit"
+            class="btn btn-warning"
+          >
+            <span> Confirm </span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-6 card border-warning p-4" style="width: 40%;">
+    <div class="">
+      <div class="d-flex justify-content-between">
+        <h1> <span class="text-warning">Todays</span> Spesial</h1>
+        <h1 class="bg-warning d-flex align-self-end ">12$</h1>
       </div>
+      <h5>CAESAR SALAD</h5> <br>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eos consequatur</p>
+    <div class="">
+      <img
+      class="img-fluid "
+      src="assets/Images/Home/HomeBackground.jpeg"
+      alt=""
+    />
     </div>
-
-    <div >
-
-    <button class="btn btn-primary">
-      <span> Back </span>
-    </button>
-
-    <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary">
-      <span> Confirm </span>
-    </button>
-
-    </div>
-
-  </form>
+  </div>
+</div>
 </div>

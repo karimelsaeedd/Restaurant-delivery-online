@@ -1,0 +1,171 @@
+<div class="container mt-2">
+  <!-- <div >
+    <p>There are no items in your basket</p>
+  </div> -->
+
+  <div>
+    <div class="pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 py-5 mb-1">
+            <div class="col-12">
+              <h1>Your Data</h1>
+              <div class="col-3" style="display: inline-block">
+                <h4 style="font-weight: bold">
+                  <p class="btn btn-warning fa fa-user me-2"></p>
+                  Name
+                </h4>
+                <p>{{ user.name }}</p>
+              </div>
+
+              <div class="col-3" style="display: inline-block">
+                <h4 style="font-weight: bold">
+                  <p class="btn btn-warning fa fa-phone me-2"></p>
+                  Phone
+                </h4>
+                <p>{{ user.phone }}</p>
+              </div>
+
+              <div class="col-3" style="display: inline-block">
+                <h4 style="font-weight: bold">
+                  <p class="btn btn-warning fa fa-send me-2"></p>
+                  E-mail
+                </h4>
+                <p>{{ user.email }}</p>
+              </div>
+
+              <div class="col-3" style="display: inline-block">
+                <h4 style="font-weight: bold">
+                  <p class="btn btn-warning fa fa-location-arrow me-2"></p>
+                  Address
+                </h4>
+                <p>{{ user.address }}</p>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="border-0 bg-light" scope="col">
+                      <div class="p-2 px-3 text-uppercase">Product</div>
+                    </th>
+                    <th class="border-0 bg-light" scope="col">
+                      <div class="py-3 text-uppercase">Price</div>
+                    </th>
+                    <th class="border-0 bg-light" scope="col">
+                      <div class="p-3 px-3 text-uppercase">Quantity</div>
+                    </th>
+                    <th class="border-0 bg-light" scope="col">
+                      <div class="py-3 text-uppercase">Total</div>
+                    </th>
+                    <th class="border-0 bg-light" scope="col">
+                      <div class="p-3 px-3 text-uppercase">Remove</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let item of basketitems">
+                  <tr>
+                    <th scope="row">
+                      <div class="p-2">
+                        <img
+                          src="{{ item.imgUrl }}"
+                          alt=""
+                          class="img-fluid"
+                          style="max-height: 50px"
+                        />
+                        <div class="ml-3 d-inline-block align-middle px-3">
+                          <h5 class="mb-0">
+                            <a routerLink="" class="text-dark"></a>
+                          </h5>
+                          <span
+                            class="text-muted font-wight-normal font-italic d-block"
+                            >{{ item.name }}
+                          </span>
+                        </div>
+                      </div>
+                    </th>
+                    <td class="align-middle">
+                      <strong></strong>{{ item.price | currency}}
+                    </td>
+                    <td class="align-middle">
+                      <div class="input-group quantity w-50">
+                        <div class="input-group-prepend">
+                          <button
+                            class="btn btn-outline-secondary minus"
+                            type="button"
+                            (click)="decreaseQuantity(item)"
+                          >
+                            -
+                          </button>
+                        </div>
+                        <input
+                          style="text-align: center"
+                          type="number"
+                          class="form-control"
+                          [value]="item.quantity"
+                          min="1"
+                          max="10"
+                          (ngModelChange)="calculatetotalItemPrice(item)"
+                        />
+                        <div class="input-group-append">
+                          <button
+                            class="btn btn-outline-secondary plus"
+                            type="button"
+                            (click)="increaseQuantity(item)"
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="align-middle">
+                      <strong></strong>{{ item.totalItemPrice | currency}}
+                    </td>
+                    <td class="align-middle px-5">
+                      <a class="text-danger">
+                        <i
+                          class="fa fa-close"
+                          style="cursor: pointer; font-size: 2em"
+                          (click)="removeItem(item)"
+                        ></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="border">
+              <h3 style="margin: 20px; font-weight: bold">Total</h3>
+
+              <div class="d-flex justify-content-between m-4">
+                <h3>SubTotal</h3>
+                <h3>{{ calculateBasketTotal() | currency}}</h3>
+              </div>
+              <hr style="margin: 10px 30px" />
+
+              <div class="d-flex justify-content-between m-4">
+                <h3>Total</h3>
+                <h3>{{ calculateBasketTotal() | currency}}</h3>
+              </div>
+
+              <hr style="margin: 10px 30px" />
+              <div class="row">
+                <div class="col-12">
+                  <div class="d-flex justify-content-between m-4">
+                    <a class="btn btn-warning fw-bold" (click)="goBack()"
+                      >Back</a
+                    >
+                    <a class="btn btn-warning fw-bold" (click)="CheckOut()">Checkout</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+</div>

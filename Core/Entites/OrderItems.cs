@@ -14,6 +14,7 @@ namespace Core.Entites
         public decimal Price { get; set; }
         public string ImgUrl { get; set; }
         public int Quantity { get; set; }
+        public int Total { get; set; }
         //public int MenuItemId { get; set; }
         //public MenuItem MenuItem { get; set; }
         public int OrderId { get; set; }

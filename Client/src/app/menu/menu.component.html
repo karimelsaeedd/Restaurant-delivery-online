@@ -8,18 +8,23 @@
       <div class=" col-6 p-0">
         <img class="img-fluid" src="{{menu.imgUrl}}" />
       </div>
-      <div class="col-6 row">
-        <input class="w-25 h-25" type="checkbox" value="{{menu.id}}" (change)="updateSelectedItems(menu , $event)"> {{menu.name}}
+      <div class="col-6 row p-0 m-0">
+        <div class="fw-bold fs-4 my-2">
+          <input class="form-check-input mx-2" type="checkbox" value="{{menu.id}}" (change)="updateSelectedItems(menu , $event)">
+          <span>{{menu.name}}</span>
+        </div>
         <!-- <h4>{{menu.name}}</h4> -->
-        <p>{{menu.description}}</p>
-        <div class="d-flex justify-content-end align-self-end">{{menu.price}}</div>
+        <p class="fs-5">{{menu.description}}</p>
+        <div class="d-flex justify-content-end align-items-end fw-bold fs-4 text-center p-0">
+          <div class="bg-warning w-50" >{{menu.price | currency}}</div>
+        </div>
       </div>
     </div>
 
   </div>
 
-  <div>
-    <button type="submit" (click)="SaveInLocalStorage()" [disabled]="selectedItems.length === 0" [routerLink]="['/user']" routerLinkActive="router-link-active">Next</button>
+  <div class="d-flex justify-content-end align-items-baseline">
+    <button class="btn btn-warning" type="submit" (click)="SaveInLocalStorage()" [disabled]="selectedItems.length === 0" [routerLink]="['/user']" routerLinkActive="router-link-active">Next</button>
   </div>
 
 

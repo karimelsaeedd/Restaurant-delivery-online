@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-user',
@@ -8,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _Router:Router, private _Location:Location) { }
 
   userForm:FormGroup = new FormGroup({
     'name': new FormControl(null,[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
@@ -20,7 +22,14 @@ export class UserComponent implements OnInit {
   submitForm()
   {
     const data = this.userForm.value;
-    localStorage.setItem('userData',JSON.stringify(data));
+    localStorage.setItem('UserData',JSON.stringify(data));
+    this._Router.navigateByUrl('/basket')
+
+  }
+
+  goBack()
+  {
+    this._Location.back()
   }
 
   ngOnInit(): void {
