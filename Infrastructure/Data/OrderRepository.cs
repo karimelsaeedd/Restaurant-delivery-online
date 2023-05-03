@@ -20,30 +20,24 @@ namespace Infrastructure.Data
         }
 
 
-        public async Task<Order> AddOrderAsync(Order order, OrderItems orderItems, User user)
+        public async Task<Order> AddOrderAsync(Order order)
         {
             await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
-
-            await _context.OrderItems.AddAsync(orderItems);
-            await _context.SaveChangesAsync();
-
-            await _context.Users.AddAsync(user);
-
             return order;
         }
 
-        //public async Task<OrderItems> AddOrderItemsAsync(OrderItems orderItems)
-        //{
-        //    await _context.OrderItems.AddAsync(orderItems);
-        //    await _context.SaveChangesAsync();
-        //    return orderItems;
-        //}
+        public async Task<OrderItems> AddOrderItemsAsync(OrderItems orderItems)
+        {
+            await _context.OrderItems.AddAsync(orderItems);
+            await _context.SaveChangesAsync();
+            return orderItems;
+        }
 
-        //public async Task<User> AddUserAsync(User user)
-        //{
-        //    await _context.Users.AddAsync(user);
-        //    return user;
-        //}
+        public async Task<User> AddUserAsync(User user)
+        {
+            await _context.Users.AddAsync(user);
+            return user;
+        }
     }
 }

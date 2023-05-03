@@ -10,9 +10,9 @@ namespace Core.Interfaces
 {
     public interface IOrderRepository
     {
-        Task<Order,OrderItems,User> AddOrderAsync(Order order, OrderItems orderItems, User user);
-        //Task<User> AddUserAsync(User user);
-        //Task<OrderItems> AddOrderItemsAsync(OrderItems orderItems);
+        Task<Order> AddOrderAsync(Order order);
+        Task<User> AddUserAsync(User user);
+        Task<OrderItems> AddOrderItemsAsync(OrderItems orderItems);
 
     }
 }
