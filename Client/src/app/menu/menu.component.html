@@ -10,7 +10,7 @@
       </div>
       <div class="col-6 row p-0 m-0">
         <div class="fw-bold fs-4 my-2">
-          <input class="form-check-input mx-2" type="checkbox" value="{{menu.id}}" (change)="updateSelectedItems(menu , $event)">
+          <input class="form-check-input mx-2" type="checkbox" value="{{menu.id}}" [checked]="menu.checked" (change)="updateSelectedItems(menu , $event)">
           <span>{{menu.name}}</span>
         </div>
         <!-- <h4>{{menu.name}}</h4> -->
@@ -23,9 +23,24 @@
 
   </div>
 
-  <div class="d-flex justify-content-end align-items-baseline">
-    <button class="btn btn-warning" type="submit" (click)="SaveInLocalStorage()" [disabled]="selectedItems.length === 0" [routerLink]="['/user']" routerLinkActive="router-link-active">Next</button>
+  <div class="d-flex justify-content-between align-items-baseline">
+    <button (click)="goBack()" class="btn btn-warning">
+      <span> Back </span>
+    </button>
+
+    <button class="btn btn-warning" type="submit"
+    (click)="saveSelectedItemsToLocalStorage()"
+    [disabled]="selectedItems.length === 0"
+    [routerLink]="['/user']" routerLinkActive="router-link-active">
+      <span> Next </span>
+    </button>
+
   </div>
+
+
+  <!-- <div class="d-flex justify-content-end align-items-baseline">
+    <button class="btn btn-warning" type="submit" (click)="saveSelectedItemsToLocalStorage()" [disabled]="selectedItems.length === 0" [routerLink]="['/user']" routerLinkActive="router-link-active">Next</button>
+  </div> -->
 
 
 

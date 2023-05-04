@@ -3,4 +3,10 @@
 https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\iti\projects\SoftZone\Task</_PublishTargetUrl>
+    <History>True|2023-05-03T07:04:07.7649172Z;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
 </Project>

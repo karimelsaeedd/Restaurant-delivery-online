@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../services/menu.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private _MenuService:MenuService,private _ActivatedRoute:ActivatedRoute) { }
+  constructor(private _MenuService:MenuService,private _ActivatedRoute:ActivatedRoute, private _Location:Location) { }
 
   RestaurantId:any=1;
   MenuList:any[] = [];
@@ -21,15 +22,17 @@ export class MenuComponent implements OnInit {
 
     this._MenuService.getMenu(this.RestaurantId).subscribe({
       next :(response) => {
-        // console.log(response);
-        this.MenuList = response[0].menuItems;
-        // console.log(response[0].restaurantId);
+        this.MenuList = response[0].menuItems.map((menuItem: any) => {
+          menuItem.checked = this.selectedItems.findIndex(i => i.id === menuItem.id) > -1;
+          return menuItem;
+        });
         this.RestaurantId = response[0].restaurantId;
+        this.loadSelectedItemsFromLocalStorage();
       },
     })
   }
 
-  updateSelectedItems(menu: {id:number , name:string , description:string , imgUrl:string , price:number}, event: any) {
+  updateSelectedItems(menu: {id:number , name:string , description:string , imgUrl:string , price:number, checked:boolean}, event: any) {
     const isChecked = event.target.checked;
     const id = menu.id;
 
@@ -41,16 +44,30 @@ export class MenuComponent implements OnInit {
         this.selectedItems.splice(index, 1);
       }
     }
-    console.log(this.selectedItems);
-
+    menu.checked = isChecked;
+    this.saveSelectedItemsToLocalStorage();
   }
 
-  SaveInLocalStorage()
+  saveSelectedItemsToLocalStorage()
   {
     localStorage.setItem('BasketItems', JSON.stringify(this.selectedItems));
   }
 
+  loadSelectedItemsFromLocalStorage()
+  {
+    const storedData = localStorage.getItem('BasketItems');
+    if (storedData) {
+      this.selectedItems = JSON.parse(storedData);
+      this.MenuList.forEach((menuItem: any) => {
+        menuItem.checked = this.selectedItems.findIndex(i => i.id === menuItem.id) > -1;
+      });
+    }
+  }
 
+  goBack()
+  {
+    this._Location.back()
+  }
 
   ngOnInit(): void {
     this.getMenu();

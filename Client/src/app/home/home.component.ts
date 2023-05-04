@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
   search()
   {
     this.getRestaurants();
+    // console.log(this.RestaurantsList);
   }
 
 

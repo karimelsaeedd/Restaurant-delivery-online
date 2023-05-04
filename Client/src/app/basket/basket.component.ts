@@ -85,6 +85,7 @@ export class BasketComponent implements OnInit {
       console.log(this.items);
     }
 
+
     const UserData = localStorage.getItem('UserData');
     if (UserData) {
       this.user = JSON.parse(UserData);
