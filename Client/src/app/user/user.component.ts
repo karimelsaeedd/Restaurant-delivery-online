@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
 
   userForm:FormGroup = new FormGroup({
     'name': new FormControl(null,[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
-    'phone': new FormControl(null,[Validators.required,Validators.pattern(/^\+?\d{10,14}$/)]),
+    'phone': new FormControl(null,[Validators.required,Validators.pattern(/^\+?\d{11,12}$/)]),
     'email': new FormControl(null,[Validators.required,Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]),
     'address': new FormControl(null,[Validators.required])
   });

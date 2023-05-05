@@ -1,3 +1,5 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
 <div class="home vh-100 text-white">
   <!-- <img class="homeImg img-fluid vh-100 w-100" src="assets/Images/Home/HomeBackground.jpeg"> -->
 
@@ -27,11 +29,26 @@
           placeholder="Restaurant Name"
           [(ngModel)]="SearchByRestaurantName"
         />
-        <select class="px-4" style="width: 34%" name="City" id="CityId" [(ngModel)]="searchByCity">
+        <select
+          class="px-4"
+          style="width: 34%"
+          name="City"
+          id="CityId"
+          [(ngModel)]="searchByCity"
+        >
           <option value="" selected>Select City</option>
-          <option *ngFor="let Restaurant of AllRestaurantsList" [ngValue]="Restaurant.city">{{Restaurant.city}}</option>
+          <option
+            *ngFor="let Restaurant of AllRestaurantsList"
+            [ngValue]="Restaurant.city"
+          >
+            {{ Restaurant.city }}
+          </option>
         </select>
-        <button class="btn btn-danger rounded-0" style="width: 24%" (click)="search()">
+        <button
+          class="btn btn-danger rounded-0"
+          style="width: 24%"
+          (click)="search()"
+        >
           Search
         </button>
       </div>
@@ -71,20 +88,67 @@
     </div>
   </div>
 
-  <div class="container-fluid border border-dark border-2 rounded-top py-5  m-auto bg-white text-black row">
-
-    <div *ngIf="RestaurantsList.length <1">
-      <h1 class="text-center" >No Restaurants Here</h1>
+  <div
+    class="container-fluid border border-dark border-2 rounded-top py-5 m-auto bg-white text-black row"
+  >
+    <div *ngIf="RestaurantsList.length < 1">
+      <h1 class="text-center">No Restaurants Here</h1>
     </div>
 
-    <div class="container-fluid w-25  m-auto p-0 col-4 card" *ngFor="let Restaurant of RestaurantsList">
-      <div class="">
+    <div
+      class="container-fluid w-25 m-auto p-0 col-4 card"
+      *ngFor="let Restaurant of RestaurantsList"
+    >
+      <div class="img-container">
+        <img class="img-fluid" src="{{ Restaurant.imgUrl }}" />
+        <div class="d-flex justify-content-between align-items-center p-2 icons">
+          <div class="d-flex justify-content-between">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-full"></i>
+          </div>
+          <div>|</div>
+          <div class="d-flex justify-content-between">
+            <i class="fa fa-comments-o"></i>
+            <span>5</span> <span></span>
+          </div>
+          <div>|</div>
+          <div class="d-flex justify-content-between">
+            <i class="fa fa-heart"></i>
+            <span>10</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 p-4">
+        <h4>{{ Restaurant.name }}</h4>
+        <p>{{ Restaurant.description }}</p>
+        <a
+          class="text-dark fw-bold"
+          routerLink="/menu/{{ Restaurant?.id }}"
+          routerLinkActive="router-link-active"
+          >Menu
+          <a class="fa fa-arrow-circle-right text-dark p-2"></a>
+        </a>
+      </div>
+
+      <!--
+      <div class="position-relative">
         <img class="img-fluid" src="{{Restaurant.imgUrl}}" />
       </div>
-      <div class=" p-4">
-        <h4>{{Restaurant.name}}</h4>
-        <p>{{Restaurant.description}}</p>
-        <a class="text-dark fw-bold" routerLink="/menu/{{Restaurant?.id}}" routerLinkActive="router-link-active">Menu </a>
+
+
+      <div class="p-4">
+        <h4>{{ Restaurant.name }}</h4>
+        <p>{{ Restaurant.description }}</p>
+        <a
+          class="text-dark fw-bold"
+          routerLink="/menu/{{ Restaurant?.id }}"
+          routerLinkActive="router-link-active"
+          >Menu</a
+        >
       </div>
     </div>
 
@@ -119,6 +183,5 @@
         <a href="#">Menu</a>
       </div>
     </div> -->
-
   </div>
 </div>

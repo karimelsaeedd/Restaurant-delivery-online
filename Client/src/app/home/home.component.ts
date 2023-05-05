@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantService } from '../services/restaurant.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private _RestaurantService:RestaurantService,private _Router:Router) { }
+  constructor(private _RestaurantService:RestaurantService,private _Router:Router, private spinner: NgxSpinnerService) { }
 
   RestaurantsList:any[] = [];
   AllRestaurantsList:any[] = [];
@@ -27,6 +28,12 @@ export class HomeComponent implements OnInit {
         && item.city.toLowerCase().includes(this.searchByCity.toLowerCase())
         )
       },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () =>{
+        this.spinner.hide();
+      }
     })
   }
 
@@ -43,6 +50,7 @@ export class HomeComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.getRestaurants()
   }
 

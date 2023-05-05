@@ -10,11 +10,14 @@
       </div>
       <div class="col-6 row p-0 m-0">
         <div class="fw-bold fs-4 my-2">
-          <input class="form-check-input mx-2" type="checkbox" value="{{menu.id}}" [checked]="menu.checked" (change)="updateSelectedItems(menu , $event)">
-          <span>{{menu.name}}</span>
+          <label for="menu-{{menu.id}}" class="form-check-label">
+            <input id="menu-{{menu.id}}" class="form-check-input border-warning mx-2" type="checkbox" value="{{menu.id}}" [checked]="menu.checked" (change)="updateSelectedItems(menu , $event)">
+            <span>{{menu.name}}</span>
+          </label>
         </div>
+
         <!-- <h4>{{menu.name}}</h4> -->
-        <p class="fs-5">{{menu.description}}</p>
+        <p class="fs-5 mt-3">{{menu.description}}</p>
         <div class="d-flex justify-content-end align-items-end fw-bold fs-4 text-center p-0">
           <div class="w-50 triangle" >{{menu.price | currency}}</div>
         </div>

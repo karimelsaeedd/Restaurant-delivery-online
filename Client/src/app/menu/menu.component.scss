@@ -19,3 +19,26 @@
   border-radius: 50%;
   z-index: -1;
 }
+
+.form-check-input[type="checkbox"]:checked {
+  background-color: #ffc107; /* Change this value to the desired warning color */
+}
+
+.form-check-label {
+  display: inline-block;
+  position: relative;
+}
+
+.form-check-label span {
+  display: inline-block;
+}
+
+.form-check-label::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50%;
+  border-bottom: 4px solid #ffc107; /* Change this value to the desired warning color */
+}
+
