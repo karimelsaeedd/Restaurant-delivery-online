@@ -11,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private _RestaurantService:RestaurantService,private _Router:Router, private spinner: NgxSpinnerService) { }
+  constructor(private _RestaurantService:RestaurantService,private Router:Router, private spinner: NgxSpinnerService) { }
 
   RestaurantsList:any[] = [];
   AllRestaurantsList:any[] = [];
@@ -43,10 +43,31 @@ export class HomeComponent implements OnInit {
     // console.log(this.RestaurantsList);
   }
 
+  goToMenu(restaurant: any) {
+    const storedData = localStorage.getItem('BasketItems');
+
+    if (storedData) {
+      const storedDataToCheck = JSON.parse(storedData);
+      console.log('storedData', storedDataToCheck)
+      if (storedDataToCheck[0].menuId === restaurant.id) {
+        this.Router.navigateByUrl('/menu/' + restaurant.id);
+      } else {
+        if (confirm('If you click "Ok" the selected items will be removed..')) {
+          localStorage.removeItem('BasketItems');
+          this.Router.navigateByUrl('/menu/' + restaurant.id);
+        }
+      }
+    } else {
+      this.Router.navigateByUrl('/menu/' + restaurant.id);
+    }
+
+    console.log(storedData);
+  }
+
 
   // navigateToMenu(RestaurantId:number)
   // {
-  //   this._Router.navigate(['/menu',RestaurantId])
+  //   this.Router.navigate(['/menu',RestaurantId])
   // }
 
   ngOnInit(): void {
