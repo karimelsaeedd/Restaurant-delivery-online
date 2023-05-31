@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common'
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { SendMailService } from '../services/SendMail.service';
+
 
 
 @Component({
@@ -11,12 +13,33 @@ import { Router } from '@angular/router';
 })
 export class BasketComponent implements OnInit {
 
-  constructor(private _Location:Location , private _ToastrService:ToastrService, private _Router:Router) { }
+  constructor(
+    private _Location:Location ,
+    private _ToastrService:ToastrService,
+    private _Router:Router,
+    private _SendMailService:SendMailService
+    ) { }
 
-  items:{id:number , name:string , description:string , imgUrl:string , price:number , quantity:number , totalPrice:number}[] = [];
+  RestaurantId:number = 0;
+  RestaurantEmail:string="";
+  items:{id:number , name:string , description:string , imgUrl:string , price:number , quantity:number , totalItemPrice:number}[] = [];
+  data = {
+    SelectedItems:this.items,
+    RestaurantId:1
+  } ;
+
   user:any ;
   confirm:boolean= false;
   basketitems:any = []
+
+    dataToSend:{} = {
+      EmailToRestaurant:"",
+      RestaurantSubject:"",
+      RestaurantBody:"",
+      EmailToClient:"",
+      ClientSubject:"",
+      ClientBody:""
+    }
 
     calculatetotalItemPrice(item:any)
     {
@@ -62,8 +85,51 @@ export class BasketComponent implements OnInit {
       this._Location.back()
     }
 
+
+    generateHtmlTable(data: any[]): string {
+
+      let html = `<table style="border-collapse: collapse; width: 100%;"><tr><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">User Name</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">User Phone</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">User Address</th></tr>`;
+
+      html += `<tr><td style="border: 1px solid #ddd; padding: 8px;">${this.user.name}</td><td style="border: 1px solid #ddd; padding: 8px;">${this.user.phone}</td><td style="border: 1px solid #ddd; padding: 8px;">${this.user.address}</td></tr>`;
+
+      html += '<table style="border-collapse: collapse; width: 100%;"><tr><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">item Name</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">Quantity</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; text-align: left;">TotalPrice</th></tr>';
+
+      for (const item of data) {
+        html += `<tr><td style="border: 1px solid #ddd; padding: 8px;">${item.Name}</td><td style="border: 1px solid #ddd; padding: 8px;">${item.Quantity}</td><td style="border: 1px solid #ddd; padding: 8px;">${item.totalItemPrice}</td></tr>`;
+      }
+
+      html += '</table>';
+      return html;
+    }
+
+
     CheckOut()
     {
+      console.log(this.user);
+
+        const BodyData = this.items.map((item) => {
+          return {
+            Name: item.name,
+            Quantity: item.quantity ,
+            totalItemPrice: item.totalItemPrice
+          };
+          console.log(BodyData);
+
+        });
+        const htmlTable = this.generateHtmlTable(BodyData);
+
+      this.dataToSend = {
+      EmailToRestaurant:this.RestaurantEmail,
+      RestaurantSubject:"New Order ",
+      RestaurantBody:htmlTable,
+      EmailToClient:this.user.email,
+      ClientSubject:"Your Order had reserved",
+      ClientBody:"<h1>Order will arrive as soon as possible</h1>" + htmlTable
+    }
+    const mail = this.user.email;
+      this._SendMailService.SendMails(this.dataToSend)
+      console.log(mail);
+
       this._ToastrService.success('Order will arrive as soon as possible', 'Your Order had reserved'
       // , {
       //   positionClass: 'toast',
@@ -80,8 +146,14 @@ export class BasketComponent implements OnInit {
 
   ngOnInit(): void {
     const BasketItems = localStorage.getItem('BasketItems');
+    const RestaurantEmail = localStorage.getItem('RestaurantEmail')!;
+    this.RestaurantEmail = JSON.parse(RestaurantEmail);
+    ;
+
     if (BasketItems) {
-      this.items = JSON.parse(BasketItems);
+      this.data = JSON.parse(BasketItems);
+      this.items = this.data.SelectedItems;
+      this.RestaurantId = this.data.RestaurantId
       console.log(this.items);
     }
 
@@ -92,6 +164,11 @@ export class BasketComponent implements OnInit {
       console.log(this.user);
     }
     this.basketitems = this.items.map(item => ({...item, quantity:1 , totalItemPrice: 0}));
+    this.items = this.basketitems;
+    console.log(this.items);
+    console.log(this.basketitems);
+
+
 
   }
 }

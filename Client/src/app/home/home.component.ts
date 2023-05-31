@@ -44,12 +44,14 @@ export class HomeComponent implements OnInit {
   }
 
   goToMenu(restaurant: any) {
+    console.log(restaurant);
+
     const storedData = localStorage.getItem('BasketItems');
 
     if (storedData) {
       const storedDataToCheck = JSON.parse(storedData);
       console.log('storedData', storedDataToCheck)
-      if (storedDataToCheck[0].menuId === restaurant.id) {
+      if (storedDataToCheck[1] === restaurant.id) {
         this.Router.navigateByUrl('/menu/' + restaurant.id);
       } else {
         if (confirm('If you click "Ok" the selected items will be removed..')) {
@@ -60,6 +62,7 @@ export class HomeComponent implements OnInit {
     } else {
       this.Router.navigateByUrl('/menu/' + restaurant.id);
     }
+    localStorage.setItem('RestaurantEmail', JSON.stringify(restaurant.email));
 
     console.log(storedData);
   }

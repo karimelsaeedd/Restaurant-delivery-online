@@ -15,6 +15,10 @@ export class MenuComponent implements OnInit {
   RestaurantId:any=1;
   MenuList:any[] = [];
   selectedItems: {id:number , name:string , description:string , imgUrl:string , price:number}[] = [];
+  data = {
+    SelectedItems:this.selectedItems,
+    RestaurantId:1
+  } ;
 
   getMenu()
   {
@@ -50,14 +54,19 @@ export class MenuComponent implements OnInit {
 
   saveSelectedItemsToLocalStorage()
   {
-    localStorage.setItem('BasketItems', JSON.stringify(this.selectedItems));
+    this.data = {
+      SelectedItems:this.selectedItems,
+      RestaurantId:this.RestaurantId
+    } ;
+    localStorage.setItem('BasketItems', JSON.stringify(this.data));
   }
 
   loadSelectedItemsFromLocalStorage()
   {
     const storedData = localStorage.getItem('BasketItems');
     if (storedData) {
-      this.selectedItems = JSON.parse(storedData);
+      this.data = JSON.parse(storedData);
+      this.selectedItems = this.data.SelectedItems;
       this.MenuList.forEach((menuItem: any) => {
         menuItem.checked = this.selectedItems.findIndex(i => i.id === menuItem.id) > -1;
       });

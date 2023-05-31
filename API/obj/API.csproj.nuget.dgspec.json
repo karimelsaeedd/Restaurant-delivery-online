@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\iti\\projects\\Restaurant delivery online\\API\\API.csproj": {}
+    "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\API\\API.csproj": {}
   },
   "projects": {
-    "D:\\iti\\projects\\Restaurant delivery online\\API\\API.csproj": {
+    "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\iti\\projects\\Restaurant delivery online\\API\\API.csproj",
+        "projectUniqueName": "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\iti\\projects\\Restaurant delivery online\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\karem\\.nuget\\packages\\",
-        "outputPath": "D:\\iti\\projects\\Restaurant delivery online\\API\\obj\\",
+        "projectPath": "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\karem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\iti\\projects\\Restaurant delivery online\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "D:\\iti\\projects\\Restaurant delivery online\\Infrastructure\\Infrastructure.csproj"
+              "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -78,21 +78,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\iti\\projects\\Restaurant delivery online\\Core\\Core.csproj": {
+    "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\iti\\projects\\Restaurant delivery online\\Core\\Core.csproj",
+        "projectUniqueName": "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "D:\\iti\\projects\\Restaurant delivery online\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\karem\\.nuget\\packages\\",
-        "outputPath": "D:\\iti\\projects\\Restaurant delivery online\\Core\\obj\\",
+        "projectPath": "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\karem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -118,9 +118,17 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.0.0, )"
             }
           },
           "imports": [
@@ -139,21 +147,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\iti\\projects\\Restaurant delivery online\\Infrastructure\\Infrastructure.csproj": {
+    "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\iti\\projects\\Restaurant delivery online\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "D:\\iti\\projects\\Restaurant delivery online\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\karem\\.nuget\\packages\\",
-        "outputPath": "D:\\iti\\projects\\Restaurant delivery online\\Infrastructure\\obj\\",
+        "projectPath": "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\karem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -167,8 +175,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\iti\\projects\\Restaurant delivery online\\Core\\Core.csproj": {
-                "projectPath": "D:\\iti\\projects\\Restaurant delivery online\\Core\\Core.csproj"
+              "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\Core\\Core.csproj": {
+                "projectPath": "E:\\Task\\Restaurant delivery online\\Restaurant-delivery-online\\Core\\Core.csproj"
               }
             }
           }
@@ -204,7 +212,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

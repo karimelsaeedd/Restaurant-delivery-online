@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
-    public class RestaurantContext :DbContext
+    public class RestaurantContext : DbContext
     {
         public RestaurantContext(DbContextOptions<RestaurantContext> options) : base(options)
-        {   
+        {
         }
 
         public DbSet<User> Users { get; set; }

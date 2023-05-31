@@ -30,7 +30,8 @@ namespace Infrastructure.Data
                 Name = restaurant.Name,
                 Description = restaurant.Description,
                 City = restaurant.City,
-                ImgUrl = restaurant.ImgUrl
+                ImgUrl = restaurant.ImgUrl,
+                Email = restaurant.Email
             })
                 .ToList();
 
